@@ -1,0 +1,41 @@
+<div class="menu">
+    <div class="item">
+      <a href="/#/home" class="title2">Home</a>
+    </div>
+    <div class="item">
+     <a href="/#/list" class="title2">Characters</a>
+    </div>
+  </div>
+<div>
+  Name:
+<input type="text" ng-model="search.name"> </input>
+  Season:
+<select ng-model="search.season">
+  <option ng-repeat="season in seasons" value="{{season}}"> {{season}}</option>
+</select>
+  Chapters:
+<select ng-model="search.chapter">
+  <option ng-repeat="chapter in chapters" value="{{chapter}}"> {{chapter}}</option>
+</select>
+</div>
+<div class="container">
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Season</th>
+    <th>Chapter</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="character in characters | filter: search: strict">
+      <td>{{character.name}}</td>
+      <td>{{character.season}}</td>
+      <td>{{character.chapter}}</td>
+      <td>
+        <a href="/#/detail/{{character.name}}/{{character.season}}/{{character.chapter}}">Details</a>
+        <a href="" ng-click="delete(character.name)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
